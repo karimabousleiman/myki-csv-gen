@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <script src="https://use.fontawesome.com/b1372aa9b2.js"></script>
+    <title>CSV Generator</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h1>CSV Generator</h1>
+    <div class="center">
+		<input type="number" id="number" required>
+		<button id="button">Generate!</button>
+	</div>
+    <div id="container">
+        <div class="square" id="password">
+            <div class="content">
+                <img src="data:image/png;base64,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">
+                <h3>Passwords</h3>
+                <input type="number" class="input" id="passwordNumber">
+            </div>
+        </div>
+        <div class="square" id="card">
+        	<div class="content">
+        		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAN+SURBVHhe7dw9aBRBFAfw81u0UUSwEIKoGM+ZMxgLBUUQrSy00EK00UIQO0WwEK5UFHf2YogEImIlBBSxiIbkdi4aLSRYKGIhIorgByoJKkr8iG/0kcwla3J7d9674v+DxxHezhjef28uxLApAAAAAAAAAAAAAAAAqAONPecXqbw5qCJzRduwX0fhU2XDZ6ix0pG5r6y5rqLwWKavZRmPrjIN9tJc2jBLm3+iwY+gSq6fVBfTtnUJjzI5t5ju9HvjNkYlKHpnvFI2WM8jLV2m++x8uvMfxm36t8wQHUcfUWNFp8SvuFlRCIM6b1bxaEtDiy5P2CgyN1Uh3N58o30eXwae5oH2WTrKNVMQF+jm/V40v8g8cX2+dHK8ybg0zXFuQwm0DbbRB/KXohlGwRFuT46G3eEvpDTbuAUJqCjY58/RvQu4NTk6ft6ODd8MN93OLeYWJDEyMo3m98gPoakQruRuPPfzvr+AwujjFpSB7vpT/jzpeN/JrXjp3lzaX+A+jLkFZXDnvj9PCuAQt+LpwjntL8D5X5mMNYf9ebqvuRUPAVQXAhBWhQDMA3o9jSq3TDe9lh8AqrqFAIQLAQgXAhAuBCBcCEC4EIBwIQDhQgDClTgA/CqiMm7g/jwRQI0hAGEIQBgCEFazADI23OT+FKPWpWxLI38LdalmAWhrXvjralX1/g5FAMIQgLCaBaBseIKuj/kvuf9byppd/C3UpZoFAPEQgDAEIAwBCEMAwhCAMAQgDAEIQwDCEIAwBCAMAQhDAMIQgDAEIAwBCEMAwhCAsIoDcA/u4BaUIXEAf56S5S2gd0AXt6AMdAOf9OepbbCbW/H2dHbOUDb8PBqADQdXdOXmcBsS0lFoiwLoDdZx6990ZK75i1RkjnILElAFs7HowVeReZ3KZqdz+9/cI1X8AGjhV10INnMbSqBtbikd38/9OdLXZ7g9NVrQ7y+ms+ybO8/WWrOAL4EY6c7sbDq299Os3hTPL/yg77Qt5MumtiafW05Hz7txm7jjaJg2H6A0e1DFRXO5SzU0YWbW/FBRsINHWzp6G22gNEcfX4ZKXu6GpRke4JEmtzrf2kAb3IrbHDVVmcfuz/Z5lJXJ5IOttGEH/Vj1kjZ3j+WN+QdRNKP39HqVXvdusdmZPL7qchu7DxRUcbnnbPOIAAAAAAAAAAAAAAAAoH6kUr8BmZZAUQzVIzYAAAAASUVORK5CYII=">
+        		<h3>Payment Cards</h3>
+        		<input type="number" class="input" id="cardNumber">
+        	</div>
+        </div>
+        <div class="square" id="note">
+        	<div class="content">
+        		<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUlSURBVHhe7Z1NiBtlGMe3ohShKiKI1pNQcNnNpOpabQU/DqJexJMXrwoeFUTRg6RIDy1l8062HyD1Jp68CMritrvvpLZWkSIoHnrwIhVaPGhFRTxo/D+TJ3RNnkxmhrx5J+88P/hT2Lzv8/XvZCbMbHZBUfr0ejuicydvd62Vi+/dxBmVAZGNX20k8bUoiXsz0N8NG5/as97ZyenrzfJW52lhSDOQOcgl1BsMY3V0OLOQucglzC9LyfFd+B/8aJS0n8qrRrK2yNtT8HZwUh6Qa5kfuYQU9HKXVO9YdduP0R7ePlsWzxy7Aw28H1nzl9zceNHAOUxKVQyItuIX5XWZ+gdxNpY2O0scxj2LZ9t3I+kPQjG5FJgBfVnzOx0RHMotSHZaLCKngjSAZM0VXFndyuHcsNyN94nJCyhYA1KZ1zicG3Ct/pacOL+CNsCaTzicG5CkM5K0oEI2oGHNNxzODdMYVtgGxN9xODeoAdlSAwopUANwov5D/OTImtdPwujrKznOdVXFgGu8PBe4cjgqxXEua77mEnKBPZ+OxBjSfBqwZR7HMP6VYrlUIzFvcwm5wJ4wDSCWbfwS9v0kxZu2qD5cLrafSFo3cvpcYG+4Bgygj/LSXaxpiu68cbpCoLfwDagy6E0N8Al6UwN8gt7UAJ+gNzXAJ+hNDfAJelMDfILe1ACfoDc1wCfoTQ3wCXpTA3yC3tQAn6A3NaA0vd6OpjXP0L0H1He8Yc0r950/cgu/mgv0pgaUYeXM4duixGyM1mqu0nOtvGwi2KMGFIWGj3rG3krEkfBzc+Ponbw8E6xXA4qCt5x3pRq3C/W+w8szwVo1oCh01ws1fyTVORBeX+flmWCtGlCGiSbkfJwQa9WASfTf882HD5w+tpt/lJJtgnmDl2WCtWpAFttPuPj3Uh4TcBK+TPt4SSZYrwaMQ7ramWQChv9LtNl+kF+aCPaoARJZl5oZJpwqMnwC8dSAYdLhW/OlVMdAkgllQCw1YDs0/MjGF6QahjUNExBHDRhQZPgD0ZHC20uBGGoAUXL4hU64EoijBqTDT8wXUt5xSodvOyscojSIVW8Dyg0//nUawycQr74GpA/tehw+gZj1NKDs8BtJ+yEOMRUQt34G9Icfnx/OkSXKP+3hE4hdLwOqNHwC8etjAN2vRazKDJ9AjnoYUHb49D0WHMIJyBO+ATR8XLefk+KO0yyGTyBX2AaUHf7ezdWHOYRTkC9cA+irz8oMv2nNIxzCOcgZpgHzMHwCecMzYP+F1ZsR83MpzjhR/Cjp7OcQMwO5wzOg2W0/J8UYJ4rd6JoDvH2mIH94BiBeS4ohyefwCdQQoAGJ+ViKMSzfwydQR4hHgLksxdguilfkIVpXoJawDKCHYqX9/5f5rQrDJ1BPYAbQ8/rC/uuqzvAJ1BSWAYj1+uh+cxU/X0eMQ0uJuZ+XVgLUF5gBydpiZM0HiNmiy9G9m6v38EuVBL2FdxKeJ9CbGuAT9KYG+AS9qQE+QW9qgE/QmxrgE/SmBvgEvakBPkFvaoBP0Jsa4BP0pgb4BL2pAT5Bb2qAT9DbfBhQZ6kBnqUGeJZ7AxJzQkqsGsh8y6NyAxIclBOrSLgA+YxH5YZm0nlWSqzqCwYc4lG5If2iiyS+JCWvu/D2/Gfz7Nq9PCp30FPJlEwqorZK/wpU+2UekXvod7FwJHwvFlM3WXMl6sYv8GhmSKt1w3JinsSlFz3fc7h2svGbke08v2e9s5MnoiiKoiiKouRkYeE/L+aw2J9iweAAAAAASUVORK5CYII=">
+        		<h3>Secure Notes</h3>
+        		<input type="number" class="input" id="noteNumber">
+        	</div>
+        </div>
+    </div>
+    <script type="text/javascript" src="csvgenerator.js"></script>
+</body>
+
+</html>
