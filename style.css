@@ -66,11 +66,19 @@ h3 {
 	color: white;
 }
 
-#number, #button{
+#number {
 	display: none;
 }
 
 .input {
 	display: none
+}
+
+#button {
+	margin-top: 50px;
+	background-color: #000;
+	color: #2dbf90;
+	border-radius: 4px;
+	border: 1px solid #2dbf90;
 }
 

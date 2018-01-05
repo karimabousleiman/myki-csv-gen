@@ -11,7 +11,7 @@ var noteNumber = document.getElementById("noteNumber");
 var randomIndex = Math.floor(Math.random() * accountCharacters.length);
 
 numAccounts = function() {
-	var	number = document.getElementById("number").value;
+	var	number = document.getElementById("passwordNumber").value;
 	return number;
 }
 
