@@ -10,10 +10,22 @@ var cardNumber = document.getElementById("cardNumber");
 var noteNumber = document.getElementById("noteNumber");
 var randomIndex = Math.floor(Math.random() * accountCharacters.length);
 
+
 numAccounts = function() {
-	var	number = document.getElementById("passwordNumber").value;
-	return number;
+	var	numberOfPassowrds = passwordNumber.value;
+	return numberOfPassowrds;
 }
+
+numCards = function() {
+	var numberOfCards = cardNumber.value;
+	return numberOfCards;
+}
+
+numNotes = function() {
+	var numberOfNotes = noteNumbver.value;
+	return numberOfNotes;
+}
+
 
 var generator = {
 	url: function() {
@@ -41,7 +53,7 @@ var generator = {
 
 function generateCSV(number) {
 	var csv = "";
-	for (let i = 0; i < number; i++) {
+	for (let i = 0; i < numAccounts(); i++) {
 		var account = {
 			username: generator.username(),
 			password: generator.password(),
