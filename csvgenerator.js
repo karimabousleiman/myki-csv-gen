@@ -68,8 +68,8 @@ function generateCSV(number) {
 
 generateButton.addEventListener("click",function () {
 	var num = numAccounts();
-	console.log(num);
-	if (num > 0) {
+
+	if (num > 0 && num <= 15000) {
 		var csv = generateCSV(numAccounts());
 		csv = 'data:text/csv;charset=utf-8,' + csv;
 		var data = encodeURI(csv);
@@ -78,7 +78,7 @@ generateButton.addEventListener("click",function () {
 		link.setAttribute('download', 'accounts.csv');
 		link.click();
 	} else {
-		alert("Please input a number");
+		alert("Please input a number between 1 and 15,000");
 	}
 
 });
