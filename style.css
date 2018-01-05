@@ -1,5 +1,6 @@
 body {
 	background-color: #000;
+	min-height: 100vh;
 }
 
 h1 {
@@ -18,6 +19,8 @@ h1 {
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: center;
+	background-color: rgba(0,0,0,0.2)
+	transition: 0.5s ease-in;
 }
 
 .square {
@@ -49,6 +52,7 @@ h1 {
 .active {
 	background: #0F0F0F;
 	border: 1px solid #2dbf90;
+	box-shadow: inset 5px 5px 5px 0 rgb(0,0,0)
 }
 
 img {
@@ -70,8 +74,12 @@ h3 {
 	display: none;
 }
 
-.input {
+.square input, .square h2 {
 	display: none
+}
+
+.active input, .active h2 {
+	display: block;
 }
 
 #button {
@@ -101,8 +109,14 @@ h3 {
 
 .inputStyle::-webkit-outer-spin-button,
 .inputStyle::-webkit-inner-spin-button {
-	/* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+	-webkit-appearance: none;
+	margin: 0; 
 }
-
+ #particles-js {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	filter: blur(1px);
+}
