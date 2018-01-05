@@ -20,7 +20,7 @@ h1 {
 	flex-wrap: wrap;
 	justify-content: center;
 	background-color: rgba(0,0,0,0.2)
-	transition: 0.5s ease-in;
+
 }
 
 .square {
@@ -35,6 +35,7 @@ h1 {
 	border: 1px solid #646464;
 	position: relative;
 	cursor: pointer;
+	transition: all 0.1s ease-in;
 }
 
 .content {
