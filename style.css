@@ -20,15 +20,9 @@ h1 {
 	justify-content: center;
 }
 
-.thing {
-	width: 100px;
-	height: 220px;
-	display: block;
-	background: red;
-}
-
 .square {
-	flex: 1;
+	width: 30%;
+	/*flex: 1;*/
 	min-width: 220px;
 	min-height: 220px;
 	background: #000;
@@ -94,5 +88,21 @@ h3 {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center; 
+}
+
+.inputStyle {
+	border-radius: 4px;
+	color: white;
+	width: 150px;
+	background-color: #191919;
+	outline: none;
+	border: 2px solid #2dbf90;
+}
+
+.inputStyle::-webkit-outer-spin-button,
+.inputStyle::-webkit-inner-spin-button {
+	/* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
