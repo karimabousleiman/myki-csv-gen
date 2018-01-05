@@ -86,6 +86,13 @@ h3 {
 	color: #2dbf90;
 	border-radius: 4px;
 	border: 1px solid #2dbf90;
+}
 
+.button {
+	position absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; 
 }
 
