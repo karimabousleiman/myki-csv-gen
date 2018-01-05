@@ -12,6 +12,52 @@ var cardSoon = document.getElementById("cardSoon");
 var noteSoon = document.getElementById("noteSoon");
 var randomIndex = Math.floor(Math.random() * accountCharacters.length);
 
+var visaPrefixList = new Array(
+    "4539",
+    "4556",
+    "4916",
+    "4532",
+    "4929",
+    "40240071",
+    "4485",
+    "4716",
+    "4"
+    );
+
+var mastercardPrefixList = new Array(
+    "51",
+    "52",
+    "53",
+    "54",
+    "55"
+    );
+
+var amexPrefixList = new Array(
+    "34",
+    "37"
+    );
+
+var discoverPrefixList = new Array("6011");
+
+var dinersPrefixList = new Array(
+    "300",
+    "301",
+    "302",
+    "303",
+    "36",
+    "38"
+    );
+
+var enRoutePrefixList = new Array(
+    "2014",
+    "2149"
+    );
+
+var jcbPrefixList = new Array(
+    "35"
+    );
+
+var voyagerPrefixList = new Array("8699");
 
 numAccounts = function() {
 	var	numberOfPassowrds = passwordNumber.value;
@@ -96,6 +142,9 @@ function selectButton(button, handler) {
 
 selectButton(passwordSelect, function(){
 	passwordNumber.classList.toggle("input")
+	passwordNumber.value = "";
+	passwordNumber.focus();
+	console.log("clicked");
 });
 selectButton(cardSelect, function() {
 	cardSoon.classList.toggle("input")
