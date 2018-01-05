@@ -8,6 +8,8 @@ var noteSelect = document.getElementById("note");
 var passwordNumber = document.getElementById("passwordNumber");
 var cardNumber = document.getElementById("cardNumber");
 var noteNumber = document.getElementById("noteNumber");
+var cardSoon = document.getElementById("cardSoon");
+var noteSoon = document.getElementById("noteSoon");
 var randomIndex = Math.floor(Math.random() * accountCharacters.length);
 
 
@@ -96,8 +98,10 @@ selectButton(passwordSelect, function(){
 	passwordNumber.classList.toggle("input")
 });
 selectButton(cardSelect, function() {
-	cardNumber.classList.toggle("input")
+	cardSoon.classList.toggle("input")
+	console.log("clicked");
 });
 selectButton(noteSelect, function() {
-	noteNumber.classList.toggle("input")
+	noteSoon.classList.toggle("input")
+	console.log("clicked");
 });

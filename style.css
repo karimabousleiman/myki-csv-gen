@@ -61,6 +61,11 @@ img {
 	max-width: 100%;
 }
 
+h2 {
+	color: #2dbf90;
+	font-size: 14px;
+}
+
 h3 {
 	padding-top: 30px;
 	color: white;
