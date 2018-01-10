@@ -13,67 +13,64 @@ var noteSoon = document.getElementById("noteSoon");
 var randomIndex = Math.floor(Math.random() * accountCharacters.length);
 
 particlesJS.load('particles-js', 'assets/particles.json', function() {
-  console.log('callback - particles.js config loaded');
+	console.log('callback - particles.js config loaded');
 });
 
-var visaPrefixList = new Array(
+const perfixList = {
+	visa: [
 	"4539",
 	"4556",
 	"4916",
 	"4532",
 	"4929",
-	"40240071",
 	"4485",
 	"4716",
-	"4"
-	);
-
-var mastercardPrefixList = new Array(
+	],
+	masterCard: [
 	"51",
 	"52",
 	"53",
 	"54",
 	"55"
-	);
-
-var amexPrefixList = new Array(
+	],
+	amex: [
 	"34",
 	"37"
-	);
-
-var discoverPrefixList = new Array("6011");
-
-var dinersPrefixList = new Array(
+	],
+	discover: [
+	"6011"
+	],
+	diners: [
 	"300",
 	"301",
 	"302",
 	"303",
 	"36",
 	"38"
-	);
-
-var enRoutePrefixList = new Array(
+	],
+	enRoute: [
 	"2014",
 	"2149"
-	);
-
-var jcbPrefixList = new Array(
+	],
+	jcb: [
 	"35"
-	);
+	],
+	voyager: [
+	"8699"
+	]
+};
 
-var voyagerPrefixList = new Array("8699");
-
-numAccounts = function() {
-	var	numberOfPassowrds = passwordNumber.value;
+var numAccounts = function() {
+	var numberOfPassowrds = passwordNumber.value;
 	return numberOfPassowrds;
 }
 
-numCards = function() {
+var numCards = function() {
 	var numberOfCards = cardNumber.value;
 	return numberOfCards;
 }
 
-numNotes = function() {
+var numNotes = function() {
 	var numberOfNotes = noteNumbver.value;
 	return numberOfNotes;
 }
@@ -100,10 +97,30 @@ var generator = {
 			password += passwordCharacters[randomIndex];
 		}
 		return password;
+	},
+	cardNumbers: function () {
+		let key = getRandomEntryFromArray(Object.keys(perfixList));
+		var cardPrefix = getRandomEntryFromArray(perfixList[key]);
+		var numbersToGenerate = (16 - cardPrefix.length);
+		var cardNumber = "";
+		for (let i = 0; i < numbersToGenerate; i++) {
+			cardNumber += Math.floor(Math.random() * 10)
+		}
+		return cardNumber;
+	},
+	CVV: function() {
+		//TODO
+	},
+	expirationDate: function() {
+		//TODO
 	}
 }
 
-function generateCSV(number) {
+function getRandomEntryFromArray(arr) {
+	return arr[Math.floor(Math.random() * (arr.length) )];
+}
+
+function generatePasswords() {
 	var csv = "";
 	for (let i = 0; i < numAccounts(); i++) {
 		var account = {
@@ -113,14 +130,23 @@ function generateCSV(number) {
 		};
 		csv += account.url + "," + account.username + "," + account.password + "\n";
 	}
+	console.log(csv);
 	return csv;
 }
 
-generateButton.addEventListener("click",function () {
-	var num = numAccounts();
+function generateCreditCard() {
+    //TODO
+}
 
-	if (num > 0 && num <= 15000) {
-		var csv = generateCSV(numAccounts());
+function generateNote() {
+    //TODO
+}
+
+
+generateButton.addEventListener("click", function() {
+	console.log("clicked");
+	if (numAccounts() > 0 && numAccounts() <= 15000) {
+		var csv = generatePasswords();
 		csv = 'data:text/csv;charset=utf-8,' + csv;
 		var data = encodeURI(csv);
 		var link = document.createElement('a');
@@ -130,21 +156,20 @@ generateButton.addEventListener("click",function () {
 	} else {
 		alert("Please input a number between 1 and 15,000");
 	}
-
 });
 
 function selectButton(button, handler) {
 	button.addEventListener("click", function(ev) {
-		if(ev.target.tagName === 'INPUT')
+		if (ev.target.tagName === 'INPUT')
 			return;
 		button.classList.toggle('active')
-		if(handler && typeof handler === 'function')
+		if (handler && typeof handler === 'function')
 			handler();
 		ev.preventDefault();
 	});
 }
 
-selectButton(passwordSelect, function(){
+selectButton(passwordSelect, function() {
 	passwordNumber.value = "";
 	passwordNumber.focus();
 	console.log("clicked");

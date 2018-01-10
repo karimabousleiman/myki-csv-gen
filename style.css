@@ -92,11 +92,12 @@ h3 {
 }
 
 .button {
-	position absolute;
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center; 
+	z-index: 1;
 }
 
 .inputStyle {
@@ -120,4 +121,5 @@ h3 {
 	right: 0;
 	bottom: 0;
 	filter: blur(1px);
+	z-index: 0;
 }
