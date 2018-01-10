@@ -75,7 +75,7 @@ var numCards = function() {
 }
 
 var numNotes = function() {
-	var numberOfNotes = noteNumbver.value;
+	var numberOfNotes = noteNumber.value;
 	return numberOfNotes;
 }
 
@@ -119,14 +119,30 @@ var generator = {
 		var firstTwo = "";
 		var lastTwo = "";
 		for (let i = 0; i < 2; i++) {
-			firstTwo = Math.floor(Math.random() * 12); //Fix when == 0
-            lastTwo = Math.floor(Math.random() * 50); //Fix when number < 10
+			firstTwo = Math.floor(Math.random() * 12 + 1); //Fix when == 0
+            lastTwo = Math.floor(Math.random() * 50 + 10); //Fix when number < 10
         }
         return (firstTwo + "/" + "20" + lastTwo);
     },
     name: function() {
     	var name = [getRandomEntryFromArray(names)];
     	return name;
+    },
+    title: function() {
+    	var length = Math.floor(Math.random() * 10 + 1);
+    	var title = "";
+    	for (let i = 0; i < length; i++) {
+    		title += getRandomEntryFromArray(passwordCharacters);
+    	}
+    	return title;
+    },
+    content: function() {
+    	var length = Math.floor(Math.random() * 100 + 1);
+    	var content = "";
+    	for (let i = 0; i < length; i++) {
+    		content += getRandomEntryFromArray(passwordCharacters);
+    	}
+    	return content;
     }
 }
 
@@ -151,7 +167,7 @@ class Password extends Item {
 		this.url = generator.url();
 	}
 	static getCSVHeaders() {
-		return ["username", "password", "url"];
+		return ["Username", "Password", "URL"];
 	}
 	static getFileName(){ 
 		return "passwords.csv"
@@ -177,10 +193,10 @@ class CreditCard extends Item {
 		this.cvv = generator.cvv();
 	}
 	static getFileName(){ 
-		return "creditcard.csv"
+		return "creditcards.csv"
 	}
 	static getCSVHeaders() {
-		return ["cardNumber", "name", "exp", "cvv"];
+		return ["Card Number", "Name", "Expiry Date", "CVV"];
 	}
 	get() {
 		return {
@@ -195,21 +211,28 @@ class CreditCard extends Item {
 	}
 }
 
-// class Note extends Item {
-//     constructor() {
-//     	super();
-//         this.username = generator.username();
-//         this.password = generator.password();
-//         this.url = generator.url();
-//     }
-//     get() {
-//         return {
-//             username: this.username,
-//             password: this.password,
-//             url: this.url,
-//         }
-//     }
-// }
+class Note extends Item {
+	constructor() {
+		super();
+		this.title = generator.title();
+		this.content = generator.content();
+	}
+	static getFileName(){ 
+		return "notes.csv"
+	}
+	static getCSVHeaders() {
+		return ["Title", "Content"];
+	}
+	get() {
+		return {
+			title: this.title,
+			content: this.content
+		}
+	}
+	toCSV() {
+		return super.toCSV([this.title, this.content]);
+	}
+}
 
 class ItemList {
 	constructor(ItemClass, number) {
@@ -251,6 +274,15 @@ generateButton.addEventListener("click", function() {
 	if (cardSelect.classList.contains("active")) {
 		if (numCards() > 0 && numCards() <= 20) {
 			downloadCSV((new ItemList(CreditCard, numCards())).toCSV(), CreditCard.getFileName());
+		} else {
+			alert("please input a number between 1 and 20");
+		}
+	}
+	if (noteSelect.classList.contains("active")) {
+		if (numNotes() > 0 && numNotes() <= 50) {
+			downloadCSV((new ItemList(Note, numNotes())).toCSV(), Note.getFileName());
+		} else {
+			alert("please input a number between 1 and 50");
 		}
 	}
 });
@@ -274,10 +306,10 @@ selectButton(passwordSelect, function() {
 selectButton(cardSelect, function() {
 	cardNumber.value = "";
 	cardNumber.focus();
-    // cardSoon.classList.toggle("input")
-    console.log("clicked");
+	console.log("clicked");
 });
 selectButton(noteSelect, function() {
-	noteSoon.classList.toggle("input")
+	noteNumber.value = "";
+	noteNumber.focus();
 	console.log("clicked");
 });
