@@ -56,21 +56,6 @@ function getRandomEntryFromArray(arr) {
 	return arr[Math.floor(Math.random() * (arr.length))];
 }
 
-// var numAccounts = function() {
-// 	var numberOfPassowrds = passwordNumber.value;
-// 	return numberOfPassowrds;
-// }
-
-// var numCards = function() {
-// 	var numberOfCards = cardNumber.value;
-// 	return numberOfCards;
-// }
-
-// var numNotes = function() {
-// 	var numberOfNotes = noteNumber.value;
-// 	return numberOfNotes;
-// }
-
 var generator = {
 	url: function() {
 		var url = getRandomEntryFromArray(urls);
