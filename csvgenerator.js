@@ -3,14 +3,12 @@ var passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ12
 var accountCharacters = "abcdefghijklmnopqrstuvwxyz1234567890";
 var urls = ["facebook.com/", "twitter.com/", "google.com/", "youtube.com/", "linkedin.com/", "wordpress.org/", "instagram.com/", "pinterest.com/", "wikipedia.org/", "wordpress.com/", "blogspot.com/", "apple.com/", "adobe.com/", "tumblr.com/", "youtu.be/", "amazon.com/", "vimeo.com/", "goo.gl/", "godaddy.com/", "yahoo.com/", "microsoft.com/", "flickr.com/", "bit.ly/", "qq.com/", "buydomains.com/", "whoisprivacyprotect.com/", "w3.org/", "vk.com/", "nytimes.com/", "reddit.com/", "baidu.com/", "t.co/", "europa.eu/", "ascii.co.uk/", "bbc.co.uk/", "statcounter.com/", "weebly.com/", "myspace.com/", "gov.uk/", "yandex.ru/", "soundcloud.com/", "blogger.com/", "mozilla.org/", "google.de/", "github.com/", "bluehost.com/", "cnn.com/", "wix.com/", "addthis.com/", "parallels.com/", "creativecommons.org/", "huffingtonpost.com/", "issuu.com/", "miitbeian.gov.cn/", "feedburner.com/", "nih.gov/", "go.com/", "imdb.com/", "theguardian.com/", "digg.com/", "stumbleupon.com/", "forbes.com/", "google.co.jp/", "123-reg.co.uk/", "paypal.com/", "tinyurl.com/", "wsj.com/", "wp.com/", "jimdo.com/", "msn.com/", "dropbox.com/", "miibeian.gov.cn/", "wixsite.com/", "washingtonpost.com/", "slideshare.net/", "amazonaws.com/", "yelp.com/", "weibo.com/", "google.co.uk/", "eventbrite.com/", "telegraph.co.uk/", "archive.org/", "etsy.com/", "addtoany.com/", "reuters.com/", "typepad.com/", "sourceforge.net/", "free.fr/", "domainmarket.com/", "livejournal.com/", "bloomberg.com/", "about.com/", "ebay.com/", "dailymail.co.uk/", "aol.com/", "bing.com/", "mail.ru/", "sina.com.cn/", "usatoday.com/", "ameblo.jp/", "fc2.com/", "amazon.co.uk/", "51.la/", "time.com/", "secureserver.net/", "macromedia.com/", "e-recht24.de/", "taobao.com/", "domainactive.co/", "wikimedia.org/", "constantcontact.com/", "gravatar.com/", "yahoo.co.jp/", "eepurl.com/", "amazon.de/", "harvard.edu/", "latimes.com/", "npr.org/", "cdc.gov/", "guardian.co.uk/", "xing.com/", "surveymonkey.com/", "live.com/", "dailymotion.com/", "webs.com/", "namejet.com/", "mit.edu/", "blogspot.co.uk/", "amzn.to/", "list-manage.com/", "stanford.edu/", "wired.com/", "bbb.org/", "icio.us/", "opera.com/", "apache.org/", "tripadvisor.com/", "businessinsider.com/", "rambler.ru/", "hostnet.nl/", "nasa.gov/", "kickstarter.com/", "independent.co.uk/", "cnet.com/", "cpanel.net/", "hatena.ne.jp/", "bandcamp.com/", "bbc.com/", "gnu.org/", "geocities.com/", "cpanel.com/", "scribd.com/", "amazon.co.jp/", "joomla.org/", "elegantthemes.com/", "ted.com/", "163.com/", "imgur.com/", "photobucket.com/", "google.it/", "behance.net/", "tripod.com/", "directdomains.com/", "delicious.com/", "medium.com/", "1und1.de/", "google.fr/", "googleusercontent.com/", "deviantart.com/", "un.org/", "disqus.com/", "trustpilot.com/", "pbs.org/", "github.io/", "ca.gov/", "who.int/", "wiley.com/", "nationalgeographic.com/", "mashable.com/", "google.es/", "cbsnews.com/", "ibm.com/", "goodreads.com/", "berkeley.edu/", "google.ca/", "whitehouse.gov/", "barnesandnoble.com/", "homestead.com/", "detik.com/", "nbcnews.com/", "spotify.com/", "foxnews.com/", "theatlantic.com/", "one.com/", "rakuten.co.jp/", "nature.com/", "buzzfeed.com/", "techcrunch.com/", "plesk.com/", "cornell.edu/", "beian.gov.cn/", "usda.gov/", "squarespace.com/", "sciencedirect.com/", "loopia.se/", "mijndomein.nl/", "change.org/", "ft.com/", "vkontakte.ru/", "blogspot.com.es/", "visma.com/", "loopia.com/", "cbc.ca/", "doubleclick.net/", "sakura.ne.jp/", "epa.gov/", "noaa.gov/", "blogspot.ca/", "ow.ly/", "php.net/", "blogspot.de/", "webmd.com/", "economist.com/", "loc.gov/", "springer.com/", "meetup.com/", "sfgate.com/", "spiegel.de/", "4.cn/", "technorati.com/", "nps.gov/", "themeforest.net/", "networksolutions.com/", "bizjournals.com/", "usnews.com/", "ning.com/", "cbslocal.com/", "wikia.com/", "engadget.com/", "prnewswire.com/", "chicagotribune.com/", "wp.me/", "xinhuanet.com/", "newyorker.com/", "gizmodo.com/", "abc.net.au/", "list-manage1.com/", "bola.net/", "slate.com/", "cnbc.com/", "cloudfront.net/", "skype.com/", "jiathis.com/", "hp.com/", "about.me/", "fda.gov/", "foursquare.com/", "line.me/", "mapquest.com/", "nydailynews.com/", "blogspot.fr/", "wufoo.com/", "umich.edu/", "businessweek.com/", "acquirethisname.com/", "marriott.com/", "domainname.de/", "booking.com/", "house.gov/", "state.gov/", "1and1.fr/", "unesco.org/", "bigcartel.com/", "fortune.com/", "yale.edu/", "columbia.edu/", "indiegogo.com/", "ustream.tv/", "ed.gov/", "youku.com/", "irs.gov/", "storify.com/", "phpbb.com/", "sogou.com/", "sedo.com/", "rs6.net/", "geocities.jp/", "google.com.au/", "examiner.com/", "google.nl/", "vice.com/", "myshopify.com/", "nifty.com/", "upenn.edu/", "boston.com/", "indiatimes.com/", "naver.com/", "a8.net/", "washington.edu/", "hibu.com/", "fb.me/", "hilton.com/", "marketwatch.com/", "histats.com/", "home.pl/", "livedoor.jp/", "axs.com/", "doi.org/", "ocn.ne.jp/", "weather.com/", "oracle.com/", "zdnet.com/", "nhs.uk/", "afternic.com/", "smh.com.au/", "1and1.com/", "senate.gov/", "ucla.edu/", "archives.gov/", "theverge.com/", "samsung.com/", "android.com/", "businesswire.com/", "fb.com/", "domainnameshop.com/", "linksynergy.com/", "uk2.net/", "phoca.cz/", "theglobeandmail.com/", "nypost.com/", "utexas.edu/", "umn.edu/", "wunderground.com/", "umblr.com/", "wisc.edu/", "scientificamerican.com/", "domeneshop.no/", "fastcompany.com/", "enable-javascript.com/", "alibaba.com/", "psu.edu/", "debian.org/", "dribbble.com/", "ap.org/", "academia.edu/", "ox.ac.uk/", "thetimes.co.uk/", "uol.com.br/", "campaign-archive1.com/", "sagepub.com/", "clickbank.net/", "bestfwdservice.com/", "campaign-archive2.com/", "nazwa.pl/", "salon.com/", "dreamhost.com/", "mailchimp.com/", "sciencemag.org/", "si.edu/", "worldbank.org/", "ftc.gov/", "goo.ne.jp/", "wikihow.com/", "census.gov/", "intel.com/", "mozilla.com/", "gofundme.com/", "walmart.com/", "google.com.br/", "princeton.edu/", "nymag.com/", "discovery.com/", "t-online.de/", "evernote.com/", "elpais.com/", "mirror.co.uk/", "fbcdn.net/", "drupal.org/", "houzz.com/", "usgs.gov/", "mlb.com/", "hostgator.com/", "inc.com/", "networkadvertising.org/", "cam.ac.uk/", "rollingstone.com/", "nyu.edu/", "hbr.org/", "alexa.com/", "cisco.com/", "thedailybeast.com/", "oxfordjournals.org/", "arstechnica.com/", "prweb.com/", "lemonde.fr/", "newsweek.com/", "entrepreneur.com/", "icann.org/", "xiti.com/", "politico.com/", "studiopress.com/", "google.pl/", "exblog.jp/", "tandfonline.com/", "oecd.org/", "dropboxusercontent.com/", "cmu.edu/", "uchicago.edu/", "aboutcookies.org/", "target.com/", "odin.com/", "espn.com/", "globo.com/", "hollywoodreporter.com/", "feedly.com/", "hhs.gov/", "allaboutcookies.org/", "lifehacker.com/", "ok.ru/", "list-manage2.com/", "mysql.com/", "shareasale.com/", "livestream.com/", "hubspot.com/", "dell.com/", "stackoverflow.com/", "zendesk.com/", "aljazeera.com/", "office.com/", "news.com.au/", "smugmug.com/", "youronlinechoices.com/", "web.de/", "tripadvisor.co.uk/", "admin.ch/", "researchgate.net/", "jugem.jp/", "bls.gov/", "adweek.com/", "cafepress.com/", "usc.edu/", "variety.com/", "att.com/", "duke.edu/", "bmj.com/", "unc.edu/", "mtv.com/", "redcross.org/", "shinystat.com/", "nhk.or.jp/", "today.com/", "ieee.org/", "example.com/", "box.com/", "ewebdevelopment.com/", "accuweather.com/", "themegrill.com/", "com.com/", "fao.org/", "apa.org/", "ebay.co.uk/", "ucsd.edu/", "telnames.net/", "liveinternet.ru/", "seattletimes.com/", "istockphoto.com/", "army.mil/", "va.gov/", "nielsen.com/", "nsw.gov.au/", "venturebeat.com/", "register.it/", "managemy.tel/", "netflix.com/", "bostonglobe.com/", "teamviewer.com/", "washingtontimes.com/", "vox.com/", "pcworld.com/", "dot.gov/", "symantec.com/", "warnerbros.com/", "google.co.in/", "telegram.me/", "blogspot.jp/", "ibtimes.com/", "bund.de/", "gpo.gov/", "antaranews.com/", "shop-pro.jp/", "dandomain.dk/", "prezi.com/", "netscape.com/", "google.ru/", "eventbrite.co.uk/", "usa.gov/", "nginx.org/", "aliyun.com/", "windowsphone.com/"]
 var generateButton = document.getElementById("button");
-var passwordSelect = document.getElementById("password");
-var cardSelect = document.getElementById("card");
-var noteSelect = document.getElementById("note");
-var passwordNumber = document.getElementById("passwordNumber");
-var cardNumber = document.getElementById("cardNumber");
-var noteNumber = document.getElementById("noteNumber");
-var cardSoon = document.getElementById("cardSoon");
-var noteSoon = document.getElementById("noteSoon");
+// var passwordSelect = document.getElementById("password");
+// var cardSelect = document.getElementById("card");
+// var noteSelect = document.getElementById("note");
+// var passwordNumber = document.getElementById("passwordNumber");
+// var cardNumber = document.getElementById("cardNumber");
+// var noteNumber = document.getElementById("noteNumber");
 
 particlesJS.load('particles-js', 'assets/particles.json', function() {
 	console.log('callback - particles.js config loaded');
@@ -64,20 +62,20 @@ function getRandomEntryFromArray(arr) {
 	return arr[Math.floor(Math.random() * (arr.length))];
 }
 
-var numAccounts = function() {
-	var numberOfPassowrds = passwordNumber.value;
-	return numberOfPassowrds;
-}
+// var numAccounts = function() {
+// 	var numberOfPassowrds = passwordNumber.value;
+// 	return numberOfPassowrds;
+// }
 
-var numCards = function() {
-	var numberOfCards = cardNumber.value;
-	return numberOfCards;
-}
+// var numCards = function() {
+// 	var numberOfCards = cardNumber.value;
+// 	return numberOfCards;
+// }
 
-var numNotes = function() {
-	var numberOfNotes = noteNumber.value;
-	return numberOfNotes;
-}
+// var numNotes = function() {
+// 	var numberOfNotes = noteNumber.value;
+// 	return numberOfNotes;
+// }
 
 var generator = {
 	url: function() {
@@ -119,8 +117,8 @@ var generator = {
 		var firstTwo = "";
 		var lastTwo = "";
 		for (let i = 0; i < 2; i++) {
-			firstTwo = Math.floor(Math.random() * 12 + 1); //Fix when == 0
-            lastTwo = Math.floor(Math.random() * 50 + 10); //Fix when number < 10
+			firstTwo = Math.floor(Math.random() * 12 + 1); 
+            lastTwo = Math.floor(Math.random() * 50 + 10);
         }
         return (firstTwo + "/" + "20" + lastTwo);
     },
@@ -145,6 +143,52 @@ var generator = {
     	return content;
     }
 }
+
+// class InvalidNumberError extends Error{
+// 	constructor(){
+// 		super("InvalidNumber")
+// 	}
+// }
+
+class Box {
+	constructor(opts) {
+		this.id = opts.id;
+		this.adapter = opts.adapter;
+		this.inputId = opts.inputId;
+		this.min = opts.min;
+		this.max = opts.max;
+		let button = this.id, 
+		input = this.inputId;
+		button.addEventListener("click", function(ev) {
+			if (ev.target.tagName === 'INPUT')
+				return;
+			button.classList.toggle('active')
+			input.value = "";
+			input.focus();
+			ev.preventDefault();
+		});
+	}
+	isValid() {
+
+		return (this.getNumber() >= this.min && this.getNumber() <= this.max);
+	}
+	getNumber() {
+		return this.inputId.value;
+	}
+	isSelected() {
+		return this.id.classList.contains("active");
+	}
+	generate() {
+		if (!this.isSelected()){
+			return;
+		}
+		if(!this.isValid()) {
+			throw new Error('InvalidNumber')
+		}
+		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
+	}
+}
+
 
 class Item {
 	get() {
@@ -253,6 +297,32 @@ class ItemList {
 	}
 }
 
+var boxes = [
+	{
+		id: document.getElementById("password"),
+		adapter: Password,
+		inputId: document.getElementById("passwordNumber"),
+		min: 1,
+		max: 15000
+	},
+	{
+		id: document.getElementById("card"),
+		adapter: CreditCard,
+		inputId: document.getElementById("cardNumber"),
+		min: 1,
+		max: 20,
+	},
+	{
+		id: document.getElementById("note"),
+		adapter: Note,
+		inputId: document.getElementById("noteNumber"),
+		min: 1,
+		max : 50,
+	}
+].map(function(b){
+	return new Box(b);
+});
+
 function downloadCSV(csv, fileName) {
 	csv = 'data:text/csv;charset=utf-8,' + csv;
 	var data = encodeURI(csv);
@@ -263,53 +333,14 @@ function downloadCSV(csv, fileName) {
 }
 
 generateButton.addEventListener("click", function() {
-	console.log("clicked");
-	if (passwordSelect.classList.contains("active")) {
-		if (numAccounts() > 0 && numAccounts() <= 15000) {
-			downloadCSV((new ItemList(Password, numAccounts())).toCSV(), Password.getFileName());
-		} else {
-			alert("Please input a number between 1 and 15,000"); 
-		} 
-	}
-	if (cardSelect.classList.contains("active")) {
-		if (numCards() > 0 && numCards() <= 20) {
-			downloadCSV((new ItemList(CreditCard, numCards())).toCSV(), CreditCard.getFileName());
-		} else {
-			alert("please input a number between 1 and 20");
-		}
-	}
-	if (noteSelect.classList.contains("active")) {
-		if (numNotes() > 0 && numNotes() <= 50) {
-			downloadCSV((new ItemList(Note, numNotes())).toCSV(), Note.getFileName());
-		} else {
-			alert("please input a number between 1 and 50");
-		}
-	}
-});
-
-function selectButton(button, handler) {
-	button.addEventListener("click", function(ev) {
-		if (ev.target.tagName === 'INPUT')
-			return;
-		button.classList.toggle('active')
-		if (handler && typeof handler === 'function')
-			handler();
-		ev.preventDefault();
+	let valid = true;
+	boxes.forEach(function(box){
+		if(box.isSelected() && !box.isValid())
+			valid = false;
 	});
-}
-
-selectButton(passwordSelect, function() {
-	passwordNumber.value = "";
-	passwordNumber.focus();
-	console.log("clicked");
-});
-selectButton(cardSelect, function() {
-	cardNumber.value = "";
-	cardNumber.focus();
-	console.log("clicked");
-});
-selectButton(noteSelect, function() {
-	noteNumber.value = "";
-	noteNumber.focus();
-	console.log("clicked");
+	if(!valid){
+		alert("Please input a valid number");
+		throw new Error('not valid');
+	}
+	boxes.forEach((box) => box.generate())
 });
