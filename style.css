@@ -109,6 +109,10 @@ h3 {
 	border: 2px solid #2dbf90;
 }
 
+.wrongInput {
+	border-color: red
+}
+
 .inputStyle::-webkit-outer-spin-button,
 .inputStyle::-webkit-inner-spin-button {
 	-webkit-appearance: none;

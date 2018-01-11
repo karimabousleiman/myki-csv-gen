@@ -123,12 +123,6 @@ var generator = {
     }
 }
 
-// class InvalidNumberError extends Error{
-// 	constructor(){
-// 		super("InvalidNumber")
-// 	}
-// }
-
 class Box {
 	constructor(opts) {
 		this.id = opts.id;
@@ -148,7 +142,6 @@ class Box {
 		});
 	}
 	isValid() {
-
 		return (this.getNumber() >= this.min && this.getNumber() <= this.max);
 	}
 	getNumber() {
@@ -156,6 +149,7 @@ class Box {
 	}
 	isSelected() {
 		return this.id.classList.contains("active");
+
 	}
 	generate() {
 		if (!this.isSelected()){
@@ -167,7 +161,6 @@ class Box {
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
 	}
 }
-
 
 class Item {
 	get() {
@@ -318,8 +311,12 @@ generateButton.addEventListener("click", function() {
 			valid = false;
 	});
 	if(!valid){
+
 		alert("Please input a valid number");
 		throw new Error('not valid');
 	}
-	boxes.forEach((box) => box.generate())
+	boxes.forEach(function(box){
+		// box.inputId.clssList.remove("wrongInput");
+		box.generate();
+	});
 });
