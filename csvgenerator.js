@@ -97,30 +97,30 @@ var generator = {
 		var lastTwo = "";
 		for (let i = 0; i < 2; i++) {
 			firstTwo = Math.floor(Math.random() * 12 + 1); 
-            lastTwo = Math.floor(Math.random() * 50 + 10);
-        }
-        return (firstTwo + "/" + "20" + lastTwo);
-    },
-    name: function() {
-    	var name = [getRandomEntryFromArray(names)];
-    	return name;
-    },
-    title: function() {
-    	var length = Math.floor(Math.random() * 10 + 1);
-    	var title = "";
-    	for (let i = 0; i < length; i++) {
-    		title += getRandomEntryFromArray(passwordCharacters);
-    	}
-    	return title;
-    },
-    content: function() {
-    	var length = Math.floor(Math.random() * 100 + 1);
-    	var content = "";
-    	for (let i = 0; i < length; i++) {
-    		content += getRandomEntryFromArray(passwordCharacters);
-    	}
-    	return content;
-    }
+			lastTwo = Math.floor(Math.random() * 50 + 10);
+		}
+		return (firstTwo + "/" + "20" + lastTwo);
+	},
+	name: function() {
+		var name = [getRandomEntryFromArray(names)];
+		return name;
+	},
+	title: function() {
+		var length = Math.floor(Math.random() * 10 + 1);
+		var title = "";
+		for (let i = 0; i < length; i++) {
+			title += getRandomEntryFromArray(passwordCharacters);
+		}
+		return title;
+	},
+	content: function() {
+		var length = Math.floor(Math.random() * 100 + 1);
+		var content = "";
+		for (let i = 0; i < length; i++) {
+			content += getRandomEntryFromArray(passwordCharacters);
+		}
+		return content;
+	}
 }
 
 class Box {
@@ -135,14 +135,22 @@ class Box {
 		button.addEventListener("click", function(ev) {
 			if (ev.target.tagName === 'INPUT')
 				return;
-			button.classList.toggle('active')
+			button.classList.toggle('active');
+			input.classList.remove('wrongInput');
 			input.value = "";
 			input.focus();
 			ev.preventDefault();
 		});
 	}
 	isValid() {
-		return (this.getNumber() >= this.min && this.getNumber() <= this.max);
+		let valid = (this.getNumber() >= this.min && this.getNumber() <= this.max);
+		if (!valid) {
+			this.inputId.classList.add('wrongInput');
+			alert(`Please enter a value between ${this.min} and ${this.max}`);
+		} else {
+			this.inputId.classList.remove('wrongInput');
+		}
+		return valid;
 	}
 	getNumber() {
 		return this.inputId.value;
@@ -159,8 +167,11 @@ class Box {
 			throw new Error('InvalidNumber')
 		}
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
+		
 	}
 }
+
+
 
 class Item {
 	get() {
@@ -270,27 +281,27 @@ class ItemList {
 }
 
 var boxes = [
-	{
-		id: document.getElementById("password"),
-		adapter: Password,
-		inputId: document.getElementById("passwordNumber"),
-		min: 1,
-		max: 15000
-	},
-	{
-		id: document.getElementById("card"),
-		adapter: CreditCard,
-		inputId: document.getElementById("cardNumber"),
-		min: 1,
-		max: 20,
-	},
-	{
-		id: document.getElementById("note"),
-		adapter: Note,
-		inputId: document.getElementById("noteNumber"),
-		min: 1,
-		max : 50,
-	}
+{
+	id: document.getElementById("password"),
+	adapter: Password,
+	inputId: document.getElementById("passwordNumber"),
+	min: 1,
+	max: 15000
+},
+{
+	id: document.getElementById("card"),
+	adapter: CreditCard,
+	inputId: document.getElementById("cardNumber"),
+	min: 1,
+	max: 20,
+},
+{
+	id: document.getElementById("note"),
+	adapter: Note,
+	inputId: document.getElementById("noteNumber"),
+	min: 1,
+	max : 50,
+}
 ].map(function(b){
 	return new Box(b);
 });
@@ -311,12 +322,9 @@ generateButton.addEventListener("click", function() {
 			valid = false;
 	});
 	if(!valid){
-
-		alert("Please input a valid number");
 		throw new Error('not valid');
 	}
 	boxes.forEach(function(box){
-		// box.inputId.clssList.remove("wrongInput");
 		box.generate();
 	});
 });
