@@ -25,7 +25,6 @@ h1 {
 
 .square {
 	width: 30%;
-	/*flex: 1;*/
 	min-width: 220px;
 	min-height: 220px;
 	background: #000;
@@ -65,6 +64,7 @@ h2 {
 	color: #2dbf90;
 	font-size: 14px;
 }
+
 
 h3 {
 	padding-top: 30px;
