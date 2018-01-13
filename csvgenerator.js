@@ -163,18 +163,11 @@ class Box {
 		if (!this.isSelected()) {
 			return;
 		}
-<<<<<<< HEAD
-		if(!this.isValid()) {
-			throw new Error('InvalidNumber');
-		}
-		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
-=======
 		if (!this.isValid()) {
 			throw new Error('InvalidNumber')
 		}
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
 
->>>>>>> c1e42868a5ef35535d0e28f8ed04c5d4e7e4d0ad
 	}
 }
 
@@ -307,8 +300,7 @@ var boxes = [{
 	inputId: document.getElementById("noteNumber"),
 	min: 1,
 	max: 50,
-}
-].map(function(b) {
+}].map(function(b) {
 	return new Box(b);
 });
 
