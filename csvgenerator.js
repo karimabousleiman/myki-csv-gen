@@ -10,45 +10,45 @@ particlesJS.load('particles-js', 'assets/particles.json', function() {
 
 const perfixList = {
 	visa: [
-	"4539",
-	"4556",
-	"4916",
-	"4532",
-	"4929",
-	"4485",
-	"4716",
+		"4539",
+		"4556",
+		"4916",
+		"4532",
+		"4929",
+		"4485",
+		"4716",
 	],
 	masterCard: [
-	"51",
-	"52",
-	"53",
-	"54",
-	"55"
+		"51",
+		"52",
+		"53",
+		"54",
+		"55"
 	],
 	amex: [
-	"34",
-	"37"
+		"34",
+		"37"
 	],
 	discover: [
-	"6011"
+		"6011"
 	],
 	diners: [
-	"300",
-	"301",
-	"302",
-	"303",
-	"36",
-	"38"
+		"300",
+		"301",
+		"302",
+		"303",
+		"36",
+		"38"
 	],
 	enRoute: [
-	"2014",
-	"2149"
+		"2014",
+		"2149"
 	],
 	jcb: [
-	"35"
+		"35"
 	],
 	voyager: [
-	"8699"
+		"8699"
 	]
 };
 
@@ -96,7 +96,7 @@ var generator = {
 		var firstTwo = "";
 		var lastTwo = "";
 		for (let i = 0; i < 2; i++) {
-			firstTwo = Math.floor(Math.random() * 12 + 1); 
+			firstTwo = Math.floor(Math.random() * 12 + 1);
 			lastTwo = Math.floor(Math.random() * 50 + 10);
 		}
 		return (firstTwo + "/" + "20" + lastTwo);
@@ -130,8 +130,8 @@ class Box {
 		this.inputId = opts.inputId;
 		this.min = opts.min;
 		this.max = opts.max;
-		let button = this.id, 
-		input = this.inputId;
+		let button = this.id,
+			input = this.inputId;
 		button.addEventListener("click", function(ev) {
 			if (ev.target.tagName === 'INPUT')
 				return;
@@ -160,13 +160,21 @@ class Box {
 		return this.id.classList.contains("active");
 	}
 	generate() {
-		if (!this.isSelected()){
+		if (!this.isSelected()) {
 			return;
 		}
+<<<<<<< HEAD
 		if(!this.isValid()) {
 			throw new Error('InvalidNumber');
 		}
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
+=======
+		if (!this.isValid()) {
+			throw new Error('InvalidNumber')
+		}
+		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
+
+>>>>>>> c1e42868a5ef35535d0e28f8ed04c5d4e7e4d0ad
 	}
 }
 
@@ -174,7 +182,7 @@ class Item {
 	get() {
 		return {};
 	}
-	static getCSVHeaders(){
+	static getCSVHeaders() {
 		return [];
 	}
 	toCSV(params) {
@@ -193,7 +201,7 @@ class Password extends Item {
 	static getCSVHeaders() {
 		return ["Username", "Password", "URL"];
 	}
-	static getFileName(){ 
+	static getFileName() {
 		return "passwords.csv"
 	}
 	get() {
@@ -216,7 +224,7 @@ class CreditCard extends Item {
 		this.exp = generator.expDate();
 		this.cvv = generator.cvv();
 	}
-	static getFileName(){ 
+	static getFileName() {
 		return "creditcards.csv"
 	}
 	static getCSVHeaders() {
@@ -241,7 +249,7 @@ class Note extends Item {
 		this.title = generator.title();
 		this.content = generator.content();
 	}
-	static getFileName(){ 
+	static getFileName() {
 		return "notes.csv"
 	}
 	static getCSVHeaders() {
@@ -279,8 +287,7 @@ class ItemList {
 return
 
 
-var boxes = [
-{
+var boxes = [{
 	id: document.getElementById("password"),
 	adapter: Password,
 	inputId: document.getElementById("passwordNumber"),
@@ -299,9 +306,9 @@ var boxes = [
 	adapter: Note,
 	inputId: document.getElementById("noteNumber"),
 	min: 1,
-	max : 50,
+	max: 50,
 }
-].map(function(b){
+].map(function(b) {
 	return new Box(b);
 });
 
@@ -316,14 +323,14 @@ function downloadCSV(csv, fileName) {
 
 generateButton.addEventListener("click", function() {
 	let valid = true;
-	boxes.forEach(function(box){
-		if(box.isSelected() && !box.isValid())
+	boxes.forEach(function(box) {
+		if (box.isSelected() && !box.isValid())
 			valid = false;
 	});
-	if(!valid){
+	if (!valid) {
 		throw new Error('not valid');
 	}
-	boxes.forEach(function(box){
+	boxes.forEach(function(box) {
 		box.generate();
 	});
 });
