@@ -277,8 +277,7 @@ class ItemList {
 		arr.unshift(this.ItemClass.getCSVHeaders());
 		return arr.join('\n');
 	}
-return
-
+}
 
 var boxes = [{
 	id: document.getElementById("password"),
