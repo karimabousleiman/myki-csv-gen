@@ -167,7 +167,6 @@ class Box {
 			throw new Error('InvalidNumber')
 		}
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
-
 	}
 }
 
@@ -258,7 +257,6 @@ class Note extends Item {
 		return super.toCSV([this.title, this.content]);
 	}
 }
-
 
 class ItemList { 
 	constructor(ItemClass, number) {
