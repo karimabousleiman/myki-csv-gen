@@ -165,6 +165,7 @@ class Box {
 		if (!this.isValid()) {
 			throw new Error('InvalidNumber')
 		}
+		console.log("clicked generate");
 		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
 	}
 }
