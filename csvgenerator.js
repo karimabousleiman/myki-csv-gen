@@ -139,7 +139,6 @@ class Box {
 			input.classList.remove('wrongInput');
 			input.value = "";
 			input.focus();
-			errorMsg.innerHTML = "";
 			ev.preventDefault();
 		});
 	}
@@ -194,7 +193,7 @@ class Password extends Item {
 		return ["Username", "Password", "URL"];
 	}
 	static getFileName() {
-		return "passwords.csv"
+		return "passwords.csv";
 	}
 	get() {
 		return {
