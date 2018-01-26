@@ -140,8 +140,6 @@ class Box {
 			input.value = "";
 			input.focus();
 			ev.preventDefault();
-			console.log(this.id);
-			console.log(this.type);
 		});
 	}
 	isValid() {
