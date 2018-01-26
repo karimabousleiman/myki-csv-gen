@@ -126,7 +126,7 @@ var generator = {
 class Box {
 	constructor(opts) {
 		this.id = opts.id;
-		this.adapter = opts.adapter;
+		this.type = opts.type;
 		this.inputId = opts.inputId;
 		this.min = opts.min;
 		this.max = opts.max;
@@ -140,6 +140,8 @@ class Box {
 			input.value = "";
 			input.focus();
 			ev.preventDefault();
+			console.log(this.id);
+			console.log(this.type);
 		});
 	}
 	isValid() {
@@ -158,6 +160,9 @@ class Box {
 	isSelected() {
 		return this.id.classList.contains("active");
 	}
+	reset() {
+		this.id.classList.remove("active");
+	}
 	generate() {
 		if (!this.isSelected()) {
 			return;
@@ -165,8 +170,7 @@ class Box {
 		if (!this.isValid()) {
 			throw new Error('InvalidNumber')
 		}
-		console.log("clicked generate");
-		downloadCSV((new ItemList(this.adapter, this.getNumber())).toCSV(), this.adapter.getFileName());
+		downloadCSV((new ItemList(this.type, this.getNumber())).toCSV(), this.type.getFileName());
 	}
 }
 
@@ -279,21 +283,21 @@ class ItemList {
 
 var boxes = [{
 	id: document.getElementById("password"),
-	adapter: Password,
+	type: Password,
 	inputId: document.getElementById("passwordNumber"),
 	min: 1,
 	max: 15000
 },
 {
 	id: document.getElementById("card"),
-	adapter: CreditCard,
+	type: CreditCard,
 	inputId: document.getElementById("cardNumber"),
 	min: 1,
 	max: 20,
 },
 {
 	id: document.getElementById("note"),
-	adapter: Note,
+	type: Note,
 	inputId: document.getElementById("noteNumber"),
 	min: 1,
 	max: 50,
@@ -323,5 +327,6 @@ generateButton.addEventListener("click", function() {
 	}
 	boxes.forEach(function(box) {
 		box.generate();
+		box.reset();
 	});
 });
