@@ -1,3 +1,4 @@
+var positions = ["Bicycle Mechanic", "Calligrapher ", "Gynecologist", "Special Forces", "Sports Psychologist", "Institutional Cook", "Glue Line", "Operational Intelligence", "Auto Body", "Wallpaper Hanger", "Wire Winder", "Social Services", "Clinical Psychologist", "Automatic Data", "Compensation Director", "Communication Manager", "Gunner's Mate", "Television Station", "Suit Maker", "Sheet Rock", "Air Support", "Dairy Technician", "Battery Repairer", "Programmer Analyst", "Heavy Antiarmor", "Weapons Infantryman", "Calligrapher", "Auto Transmission", "Specialist Glass Bender", "Surgical Instrument Mechanic", "Scuba Diver", "Boxing Trainer", "Corporate Tax", "Preparer Gcs Mk 160 Mod 4 Fire Control Technician", "Hydrodynamics Professor", "Geotechnical Engineering", "Casino Games Dealer", "Washing Machine Repairer", "Library and Information Technology Instructor", "Clutch Housing Assembler", "Career Technical Counselor", "Scale Operator", "Editorial Cartoonist", "Survey Methodologist", "Induction Furnace Operator", "Intranet Developer", "School Psychometrist", "Facilities Painter"];
 var names = ["Helaine Angert", "Johnathon Markee", "Dorian Kumar", "Xuan Sandridge", "Elida Earnshaw", "Bridgett Lown", "Ilene Mershon", "Rolanda Denley", "Lucienne Bianco", "Elfriede Stebbins", "Halley Stage", "Trisha Kearl", "Nenita Reedy", "Gaynell Lucky", "Corrina Kraemer", "Krysta Mcfetridge", "Candace Barksdale", "Robena Hetzler", "Tianna Lafreniere", "Stephany Ridenhour", "Ervin Gardener", "Earlie Tallmadge", "Rosalba Christianson", "Tamesha Bouska", "Sabrina Burtch", "Herschel Paez", "Annabell Bruns", "Ranee Claro", "Anisa Geise", "Nelle Rueter", "Shanna Buse", "Carri Ramsay", "Luvenia Debolt", "Elva Yung", "Reagan Linscott", "Joyce Gettings", "Mozella Mcwhorter", "Kenia Corchado", "Burl Chau", "Staci Lauria", "Winford Manigault", "Laurinda Kerley", "Wally Geyer", "Maryann Tyrrell", "Rufina Littler", "Shanae Brisker", "Timothy Lansberry", "Nickie Threet", "Ray Boring"];
 var passwordCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()_+<>?}{[]";
 var accountCharacters = "abcdefghijklmnopqrstuvwxyz1234567890";
@@ -16,7 +17,7 @@ const perfixList = {
 		"4532",
 		"4929",
 		"4485",
-		"4716",
+		"4716"
 	],
 	masterCard: [
 		"51",
@@ -81,7 +82,7 @@ var generator = {
 		var numbersToGenerate = (16 - cardPrefix.length);
 		var cardNumber = "";
 		for (let i = 0; i < numbersToGenerate; i++) {
-			cardNumber += Math.floor(Math.random() * 10)
+			cardNumber += Math.floor(Math.random() * 10);
 		}
 		return ("" + cardPrefix + cardNumber);
 	},
@@ -102,7 +103,7 @@ var generator = {
 		return (firstTwo + "/" + "20" + lastTwo);
 	},
 	name: function() {
-		var name = [getRandomEntryFromArray(names)];
+		var name = getRandomEntryFromArray(names);
 		return name;
 	},
 	title: function() {
@@ -120,6 +121,10 @@ var generator = {
 			content += getRandomEntryFromArray(passwordCharacters);
 		}
 		return content;
+	},
+	position: function() {
+		var position = getRandomEntryFromArray(positions);
+		return position;
 	}
 };
 
@@ -166,7 +171,7 @@ class Box {
 			return;
 		}
 		if (!this.isValid()) {
-			throw new Error('InvalidNumber')
+			throw new Error('InvalidNumber');
 		}
 		downloadCSV((new ItemList(this.type, this.getNumber())).toCSV(), this.type.getFileName());
 	}
@@ -203,7 +208,7 @@ class Password extends Item {
 			username: this.username,
 			password: this.password,
 			url: this.url,
-		}
+		};
 	}
 	toCSV() {
 		return super.toCSV([this.username, this.password, this.url]);
@@ -219,7 +224,7 @@ class CreditCard extends Item {
 		this.cvv = generator.cvv();
 	}
 	static getFileName() {
-		return "creditcards.csv"
+		return "creditcards.csv";
 	}
 	static getCSVHeaders() {
 		return ["Card Number", "Name", "Expiry Date", "CVV"];
@@ -230,7 +235,7 @@ class CreditCard extends Item {
 			name: this.name,
 			exp: this.exp,
 			cvv: this.cvv,
-		}
+		};
 	}
 	toCSV() {
 		return super.toCSV([this.cardNumber, this.name, this.exp, this.cvv]);
@@ -244,7 +249,7 @@ class Note extends Item {
 		this.content = generator.content();
 	}
 	static getFileName() {
-		return "notes.csv"
+		return "notes.csv";
 	}
 	static getCSVHeaders() {
 		return ["Title", "Content"];
@@ -253,14 +258,50 @@ class Note extends Item {
 		return {
 			title: this.title,
 			content: this.content
-		}
+		};
 	}
 	toCSV() {
 		return super.toCSV([this.title, this.content]);
 	}
 }
 
-class ItemList { 
+class User extends Item {
+	constructor() {
+		super();
+		this.firstName = (function() {
+			var fullName = generator.name();
+			var splitName = fullName.split(" ");
+			return splitName[0];
+		})();
+		this.lastName = (function() {
+			var fullName = generator.name();
+			var splitName = fullName.split(" ");
+			return splitName[1];
+		})();
+		this.email = this.firstName + this.lastName + "@gmail.com";
+		this.position = generator.position();
+	}
+
+	static getFileName() {
+		return "users.csv"
+	}
+	static getCSVHeaders() {
+		return ["email", "First_Name", "Last_Nane", "Position"];
+	}
+	get() {
+		return{
+			firstName: this.firstName,
+			lastName: this.lastName,
+			email: this.email,
+			position: this.position
+		};
+	}
+	toCSV() {
+		return super.toCSV([this.email, this.firstName, this.lastName, this.position]);
+	}
+}
+
+class ItemList {
 	constructor(ItemClass, number) {
 		if (!ItemClass.prototype instanceof Item)
 			throw new Error("Invalid Item Class");
@@ -273,33 +314,41 @@ class ItemList {
 	toCSV() {
 		let arr = this.items.map(function(item) {
 			return item.toCSV();
-		})
+		});
 		arr.unshift(this.ItemClass.getCSVHeaders());
 		return arr.join('\n');
 	}
 }
 
 var boxes = [{
-	id: document.getElementById("password"),
-	type: Password,
-	inputId: document.getElementById("passwordNumber"),
-	min: 1,
-	max: 15000
-},
-{
-	id: document.getElementById("card"),
-	type: CreditCard,
-	inputId: document.getElementById("cardNumber"),
-	min: 1,
-	max: 20,
-},
-{
-	id: document.getElementById("note"),
-	type: Note,
-	inputId: document.getElementById("noteNumber"),
-	min: 1,
-	max: 50,
-}].map(function(b) {
+		id: document.getElementById("password"),
+		type: Password,
+		inputId: document.getElementById("passwordNumber"),
+		min: 1,
+		max: 15000
+	},
+	{
+		id: document.getElementById("card"),
+		type: CreditCard,
+		inputId: document.getElementById("cardNumber"),
+		min: 1,
+		max: 20
+	},
+	{
+		id: document.getElementById("note"),
+		type: Note,
+		inputId: document.getElementById("noteNumber"),
+		min: 1,
+		max: 50
+	},
+	{
+		id: document.getElementById("user"),
+		type: User,
+		inputId: document.getElementById("userNumber"),
+		min: 1,
+		max: 200
+	}
+].map(function(b) {
 	return new Box(b);
 });
 
