@@ -286,7 +286,7 @@ class User extends Item {
 		return "users.csv"
 	}
 	static getCSVHeaders() {
-		return ["email", "First_Name", "Last_Nane", "Position"];
+		return ["email", "first_name", "last_name", "position"];
 	}
 	get() {
 		return{
