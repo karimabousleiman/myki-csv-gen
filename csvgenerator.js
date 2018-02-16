@@ -166,14 +166,22 @@ class Box {
 	reset() {
 		this.id.classList.remove("active");
 	}
+	name() {
+		if (this.getNumber() > 1) {
+			return this.type.getFileName()[1];
+		} else {
+			return this.type.getFileName()[0];
+		}
+	}
 	generate() {
+		var number;
 		if (!this.isSelected()) {
 			return;
 		}
 		if (!this.isValid()) {
 			throw new Error('InvalidNumber');
 		}
-		downloadCSV((new ItemList(this.type, this.getNumber())).toCSV(), this.type.getFileName());
+		downloadCSV((new ItemList(this.type, this.getNumber())).toCSV(), (this.getNumber() + "-" + this.name()));
 	}
 }
 
@@ -201,7 +209,7 @@ class Password extends Item {
 		return ["Username", "Password", "URL"];
 	}
 	static getFileName() {
-		return "passwords.csv";
+		return ["password.csv", "passwords.csv"];
 	}
 	get() {
 		return {
@@ -224,7 +232,7 @@ class CreditCard extends Item {
 		this.cvv = generator.cvv();
 	}
 	static getFileName() {
-		return "creditcards.csv";
+		return ["creditcard.csv", "creditcards.csv"];
 	}
 	static getCSVHeaders() {
 		return ["Card Number", "Name", "Expiry Date", "CVV"];
@@ -249,7 +257,7 @@ class Note extends Item {
 		this.content = generator.content();
 	}
 	static getFileName() {
-		return "notes.csv";
+		return ["note.csv", "notes.csv"];
 	}
 	static getCSVHeaders() {
 		return ["Title", "Content"];
@@ -283,7 +291,7 @@ class User extends Item {
 	}
 
 	static getFileName() {
-		return "users.csv"
+		return ["user.csv", "users.csv"];
 	}
 	static getCSVHeaders() {
 		return ["email", "first_name", "last_name", "position"];
