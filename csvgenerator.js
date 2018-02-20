@@ -167,11 +167,8 @@ class Box {
 		this.id.classList.remove("active");
 	}
 	name() {
-		if (this.getNumber() > 1) {
-			return this.type.getFileName()[1];
-		} else {
-			return this.type.getFileName()[0];
-		}
+		const name = this.getNumber() > 1 ? this.type.getFileName()[1] : this.type.getFileName()[0];
+		return name;
 	}
 	generate() {
 		var number;
