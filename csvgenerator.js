@@ -294,7 +294,7 @@ class User extends Item {
 		return ["email", "first_name", "last_name", "position"];
 	}
 	get() {
-		return{
+		return {
 			firstName: this.firstName,
 			lastName: this.lastName,
 			email: this.email,
@@ -308,7 +308,7 @@ class User extends Item {
 
 class ItemList {
 	constructor(ItemClass, number) {
-		if (!ItemClass.prototype instanceof Item)
+		if (!(ItemClass.prototype instanceof Item))
 			throw new Error("Invalid Item Class");
 		this.items = [];
 		this.ItemClass = ItemClass;
@@ -361,12 +361,22 @@ function downloadCSV(csv, fileName) {
 	csv = 'data:text/csv;charset=utf-8,' + csv;
 	var data = encodeURI(csv);
 	var link = document.createElement('a');
-	link.setAttribute('href', data);
+	link.setAttribute('href', data.replace(/#/g, '%23'));
 	link.setAttribute('download', fileName);
 	document.body.appendChild(link);
 	link.click();
 	document.body.removeChild(link);
 }
+
+generateButton.addEventListener("keyup", function(event) {
+	event.preventDefault();
+	console.log("enter pressed");
+
+	if (event.keyCode === 13) {
+		console.log("enter pressed");
+		generateButton.click();
+	}
+});
 
 generateButton.addEventListener("click", function() {
 	let valid = true;
