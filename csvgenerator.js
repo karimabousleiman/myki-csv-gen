@@ -201,22 +201,24 @@ class Password extends Item {
 		this.username = generator.username();
 		this.password = generator.password();
 		this.url = generator.url();
+		this.nickname = this.url.split(".")[0];
 	}
 	static getCSVHeaders() {
-		return ["Username", "Password", "URL"];
+		return ["Nickname","Username", "Password", "URL"];
 	}
 	static getFileName() {
 		return ["password.csv", "passwords.csv"];
 	}
 	get() {
 		return {
+			nickname: this.nickname,
 			username: this.username,
 			password: this.password,
 			url: this.url,
 		};
 	}
 	toCSV() {
-		return super.toCSV([this.username, this.password, this.url]);
+		return super.toCSV([this.nickname,this.username, this.password, this.url]);
 	}
 }
 
