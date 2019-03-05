@@ -339,21 +339,21 @@ var boxes = [{
 		type: CreditCard,
 		inputId: document.getElementById("cardNumber"),
 		min: 1,
-		max: 20
+		max: 15000
 	},
 	{
 		id: document.getElementById("note"),
 		type: Note,
 		inputId: document.getElementById("noteNumber"),
 		min: 1,
-		max: 50
+		max: 15000
 	},
 	{
 		id: document.getElementById("user"),
 		type: User,
 		inputId: document.getElementById("userNumber"),
 		min: 1,
-		max: 200
+		max: 15000
 	}
 ].map(function(b) {
 	return new Box(b);
