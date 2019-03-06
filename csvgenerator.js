@@ -285,7 +285,7 @@ class User extends Item {
 			var splitName = fullName.split(" ");
 			return splitName[1];
 		})();
-		this.email = this.firstName + this.lastName + "@gmail.com";
+		this.email = this.firstName + this.lastName + "@fakemail.com";
 		this.position = generator.position();
 	}
 
