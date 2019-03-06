@@ -67,7 +67,7 @@ var generator = {
 		for (let i = 0; i < 5; i++) {
 			username += getRandomEntryFromArray(accountCharacters);
 		}
-		return username + "@gmail.com";
+		return username + "@fakemail.com";
 	},
 	password: function() {
 		var password = "";
