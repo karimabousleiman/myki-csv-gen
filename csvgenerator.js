@@ -331,28 +331,28 @@ var boxes = [{
 		id: document.getElementById("password"),
 		type: Password,
 		inputId: document.getElementById("passwordNumber"),
-		min: 1,
+		min: 0,
 		max: 15000
 	},
 	{
 		id: document.getElementById("card"),
 		type: CreditCard,
 		inputId: document.getElementById("cardNumber"),
-		min: 1,
+		min: 0,
 		max: 15000
 	},
 	{
 		id: document.getElementById("note"),
 		type: Note,
 		inputId: document.getElementById("noteNumber"),
-		min: 1,
+		min: 0,
 		max: 15000
 	},
 	{
 		id: document.getElementById("user"),
 		type: User,
 		inputId: document.getElementById("userNumber"),
-		min: 1,
+		min: 0,
 		max: 15000
 	}
 ].map(function(b) {
@@ -370,23 +370,19 @@ function downloadCSV(csv, fileName) {
 	document.body.removeChild(link);
 }
 
-generateButton.addEventListener("keyup", function(event) {
+window.addEventListener("keyup", function(event) {
 	event.preventDefault();
-	console.log("enter pressed");
-
 	if (event.keyCode === 13) {
-		console.log("enter pressed");
 		generateButton.click();
 	}
 });
 
 generateButton.addEventListener("click", function() {
-	let valid = true;
-	boxes.forEach(function(box) {
-		if (box.isSelected() && !box.isValid())
-			valid = false;
-	});
-	if (!valid) {
+	const invalid = boxes.some(function(box){
+		return box.isSelected() && !box.isValid()
+	})
+
+	if (invalid) {
 		throw new Error('not valid');
 	}
 	boxes.forEach(function(box) {
