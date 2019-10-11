@@ -247,7 +247,7 @@ class CreditCard extends Item {
 	constructor() {
 		super();
 		this.cardNumber = generator.cardNumber();
-		this.name = generator.name();
+		this.name = generator.name.fullName();
 		this.exp = generator.expDate();
 		this.cvv = generator.cvv();
 	}
@@ -297,10 +297,10 @@ class IDCard extends Item {
 	constructor() {
 		super();
 		this.nickname = generator.nickname();
-		this.name = generator.name();
+		this.name = generator.name.fullName();
 		this.IDNumber = generator.number();
 		this.IDType = generator.IDType();
-		this.country = generator.country();
+		this.country = generator.address.country();
 		this.issDate = generator.issDate();
 		this.expDate = generator.expDate();
 	}
@@ -374,16 +374,8 @@ class Identities extends Item {
 class User extends Item {
 	constructor() {
 		super();
-		this.firstName = (function() {
-			var fullName = generator.name();
-			var splitName = fullName.split(" ");
-			return splitName[0];
-		})();
-		this.lastName = (function() {
-			var fullName = generator.name();
-			var splitName = fullName.split(" ");
-			return splitName[1];
-		})();
+		this.firstName = generator.name.firstName();
+		this.lastName = generator.name.lastName();
 		this.email = this.firstName + this.lastName + "@fakemail.com";
 		this.position = generator.position();
 	}
