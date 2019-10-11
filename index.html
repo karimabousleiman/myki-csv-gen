@@ -5,6 +5,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
 	    crossorigin="anonymous">
 	<script src="https://use.fontawesome.com/b1372aa9b2.js"></script>
+	<script src="faker.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js" type="text/javascript"></script>
+	
 	<title>CSV Generator</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -42,11 +45,26 @@
 				<input type="number" class="inputStyle" id="userNumber">
 			</div>
 		</div>
+		<div class="square" id="IDCard">
+			<div class="content">
+				<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABmJLR0QA/wD/AP+gvaeTAAAEVUlEQVR4nO3bX2iVdRzH8ff3OftzjhmKtC7SoGBItLMtU1C7GXPKLrYurQu7CmqFqGt24aTAOy1Iz44EJhJB2cUSCbJdNPUsInCE0Nym9udOrIvAUsPWOTu/bxfbiZjPtqO/Z+uZ5/uCwfPs+f2e348P3+f34zw7A2OMMcYYY4wxxhizeGS2C0257BpFj4C2Aw8v4pzi5LYIg4HIvu9b9vwU1iA0wKZcdo2KG0FZtbDzWyKEG0HRNY209VyfeakqrL2iR1BWCZwR514L61gJms8dXu2CxAeodriEHAZenNkmCO+q7QCVHB7ASFvPdQ0mXwdAg/awNrMEOLXmVXJ4JWMte69NHemKsOuzBWjKZAF6sgA9WYCeLEBPFqAnC9CTBejJAvRkAXqyAD2Fvo25X/UD2drkMn1VVHcA6elfjwIn3W9/HB9/4UA+yvHiILIKbD53eHUqVRwW1SywEXho+mcTcDSoW3lh3VdHH4tqvLiIpALrB7K1Lih+CdKMcBkn+/M1E+cBago1bSAHgXWTNcUvGvoPbC63EhtzGY1ifvMZbe2e9c38fCIJMJl0XSDNwJWawsRzF7ftu/mfy5+vHzyUy1clL6A8G9SteAV4P4px4yCaNTCQHaiCSu+M8AC4uG3fzfRQ335RPQ3yEmUG6FMZiyWSNVBUnwYoPbZhJu7IuenDhijGjIuINhEpztdiRfWdUjXN23YpiShAvQylDSPc34naNgCB8WjGjIdI1kAR/VhVNoMcXD94KDdzHXwmd2RlUYKDqOKQT8q970LtwlGurZEEWL182Yn87b9eBjbkq5LD6aG+3tKal0wWt06Htxb47hF+PxHFmHERSYAXN3QV0mcznZJgCHhKVE+nUqXiEVAFuCr5QudQ+4HJcu9bMbtw/UC2VhLyNsraWRspa7W66q36gWxtFGPGhXeA2/v7E8tS7hToToS8on2BcxslX1gu+cJyUTaJkEUoILIrmdLPtvf3J6KYfBx4P8JXH/31XZRO4BqB6xhr6Rmd0WQYGG44n/0wEHdG0Od/qPvlHeBN37HjwCvA9NlME067ESYIXMfo3eH9a3zL7pGG89nOQNywKm805fo+utS6Z2yu+y+Fz8J+j3AVXQgBcGyu8ErGt+weQfU4QqBol9fYMeFVgaJsAXDCp2X3QU4q7EKm+s6lEnbhJwDQ6ivldihK9dQnEeVJz7FjwasCR1u7U/faZ7x155/M8c3Ypcb+JuLJAvRkAXqyAD1ZgJ4sQE8WoCcL0JMF6MkC9HRfATYOZb5N5zLfPKjn9+K+AlTFCaIP6rm3xlxGF+tl5lIwVx7hFSjcgql/e13AeS0J6a/fe3zqSO76zg/MEqDAWQBFj1VyiE257BrRxLHp08GwNqHvA2Wy2KuJRAtoh6LXGnOZBZtknCkOFBBuOC32hrUJrcCRrXt/DJxrRrS/9DhXJOEWyCmnbuN4a8/P//d0jDHGGGOMMcYYY8w/JtPasNcGzdoAAAAASUVORK5CYII=">	
+				<h3>ID Cards</h3>
+				<input type="number" class="inputStyle" id="idcardNumber">
+			</div>
+		</div>
+		<div class="square" id="Identities">
+			<div class="content">
+				<img
+					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAABmJLR0QA/wD/AP+gvaeTAAAEVUlEQVR4nO3bX2iVdRzH8ff3OftzjhmKtC7SoGBItLMtU1C7GXPKLrYurQu7CmqFqGt24aTAOy1Iz44EJhJB2cUSCbJdNPUsInCE0Nym9udOrIvAUsPWOTu/bxfbiZjPtqO/Z+uZ5/uCwfPs+f2e348P3+f34zw7A2OMMcYYY4wxxhizeGS2C0257BpFj4C2Aw8v4pzi5LYIg4HIvu9b9vwU1iA0wKZcdo2KG0FZtbDzWyKEG0HRNY209VyfeakqrL2iR1BWCZwR514L61gJms8dXu2CxAeodriEHAZenNkmCO+q7QCVHB7ASFvPdQ0mXwdAg/awNrMEOLXmVXJ4JWMte69NHemKsOuzBWjKZAF6sgA9WYCeLEBPFqAnC9CTBejJAvRkAXqyAD2Fvo25X/UD2drkMn1VVHcA6elfjwIn3W9/HB9/4UA+yvHiILIKbD53eHUqVRwW1SywEXho+mcTcDSoW3lh3VdHH4tqvLiIpALrB7K1Lih+CdKMcBkn+/M1E+cBago1bSAHgXWTNcUvGvoPbC63EhtzGY1ifvMZbe2e9c38fCIJMJl0XSDNwJWawsRzF7ftu/mfy5+vHzyUy1clL6A8G9SteAV4P4px4yCaNTCQHaiCSu+M8AC4uG3fzfRQ335RPQ3yEmUG6FMZiyWSNVBUnwYoPbZhJu7IuenDhijGjIuINhEpztdiRfWdUjXN23YpiShAvQylDSPc34naNgCB8WjGjIdI1kAR/VhVNoMcXD94KDdzHXwmd2RlUYKDqOKQT8q970LtwlGurZEEWL182Yn87b9eBjbkq5LD6aG+3tKal0wWt06Htxb47hF+PxHFmHERSYAXN3QV0mcznZJgCHhKVE+nUqXiEVAFuCr5QudQ+4HJcu9bMbtw/UC2VhLyNsraWRspa7W66q36gWxtFGPGhXeA2/v7E8tS7hToToS8on2BcxslX1gu+cJyUTaJkEUoILIrmdLPtvf3J6KYfBx4P8JXH/31XZRO4BqB6xhr6Rmd0WQYGG44n/0wEHdG0Od/qPvlHeBN37HjwCvA9NlME067ESYIXMfo3eH9a3zL7pGG89nOQNywKm805fo+utS6Z2yu+y+Fz8J+j3AVXQgBcGyu8ErGt+weQfU4QqBol9fYMeFVgaJsAXDCp2X3QU4q7EKm+s6lEnbhJwDQ6ivldihK9dQnEeVJz7FjwasCR1u7U/faZ7x155/M8c3Ypcb+JuLJAvRkAXqyAD1ZgJ4sQE8WoCcL0JMF6MkC9HRfATYOZb5N5zLfPKjn9+K+AlTFCaIP6rm3xlxGF+tl5lIwVx7hFSjcgql/e13AeS0J6a/fe3zqSO76zg/MEqDAWQBFj1VyiE257BrRxLHp08GwNqHvA2Wy2KuJRAtoh6LXGnOZBZtknCkOFBBuOC32hrUJrcCRrXt/DJxrRrS/9DhXJOEWyCmnbuN4a8/P//d0jDHGGGOMMcYYY8w/JtPasNcGzdoAAAAASUVORK5CYII=">
+				<h3>Identities</h3>
+				<input type="number" class="inputStyle" id="identitiesNumber">
+			</div>
+		</div>
 	</div>
 	<div class="button">
 		<button id="button">GENERATE</button>
 	</div>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="assets/particles.js"></script>
 	<script type="text/javascript" src="csvgenerator.js"></script>
 </body>
