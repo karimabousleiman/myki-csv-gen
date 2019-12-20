@@ -145,7 +145,14 @@ var generator = {
 	},
 	nickname: function() {
 		return faker.lorem.word();
+	},
+	companyName: function() {
+		return faker.company.companyName();
+	},
+	domainName: function() {
+		return faker.internet.domainName();
 	}
+
 
 };
 
@@ -169,7 +176,7 @@ class Box {
 		});
 	}
 	isValid() {
-		let valid = (this.getNumber() >= this.min && this.getNumber() <= this.max);
+		let valid = (this.getNumber() >= this.min && this.getNumber() <= this.max && this.getNumber() != "");
 		if (!valid) {
 			this.inputId.classList.add('wrongInput');
 			alert(`Please enter a value between ${this.min} and ${this.max}`);
@@ -399,8 +406,37 @@ class User extends Item {
 	}
 }
 
+class Company extends Item {
+	constructor() {
+		super();
+		this.companyName = generator.companyName()
+		this.domainName = generator.domainName()
+		this.licenseCount = generator.number();
+	}
+	
+	static getFileName() {
+		return ["company.csv", "companies.csv"];
+	}
+
+	static getCSVHeaders() {
+		return ["company_name", "domain", "license_count"];
+	}
+
+	get() {
+		return{
+			companyName: this.companyName,
+			domainName: this.domainName,
+			licenseCount: this.licenseCount
+		};
+	}
+	toCSV() {
+		return super.toCSV([this.companyName, this.domainName, this.licenseCount]);
+	}
+}
+
 class ItemList {
 	constructor(ItemClass, number) {
+		debugger
 		if (!(ItemClass.prototype instanceof Item))
 			throw new Error("Invalid Item Class");
 		this.items = [];
@@ -459,6 +495,13 @@ var boxes = [{
 		inputId: document.getElementById("identitiesNumber"),
 		min: 0,
 		max: 15000
+	},
+	{
+		id: document.getElementById("Companies"),
+		type: Company,
+		inputId: document.getElementById("companiesNumber"),
+		min: 0,
+		max: 15000
 	}
 ].map(function(b) {
 	return new Box(b);
@@ -485,13 +528,14 @@ window.addEventListener("keyup", function(event) {
 generateButton.addEventListener("click", function() {
 	const invalid = boxes.some(function(box){
 		return box.isSelected() && !box.isValid()
-	})
+	});
 
 	if (invalid) {
 		throw new Error('not valid');
 	}
+
 	boxes.forEach(function(box) {
 		box.generate();
 		box.reset();
 	});
-});
+});	
